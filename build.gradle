@@ -10,6 +10,7 @@ buildscript {
         maven {
             url "https://plugins.gradle.org/m2/"
         }
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.3'
@@ -19,7 +20,14 @@ buildscript {
         classpath 'org.ccil.cowan.tagsoup:tagsoup:1.2.1'
         classpath "com.github.triplet.gradle:play-publisher:2.7.5"
         classpath "org.jacoco:org.jacoco.core:0.8.5"
+        classpath 'org.owasp:dependency-check-gradle:5.3.2'
     }
+}
+
+apply plugin: 'org.owasp.dependencycheck'
+
+dependencyCheck {
+    skipConfigurations += 'lintClassPath'
 }
 
 if (project.hasProperty("coverage")) {
