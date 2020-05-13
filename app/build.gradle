@@ -19,7 +19,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "uk.nhs.nhsx.colocate"
+        applicationId "com.nbs.se"
         minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
@@ -45,17 +45,19 @@ android {
     }
 
     defaultConfig {
-        def baseUrl = findProperty("sonar.baseUrl") ?: {
+        def baseUrl = findProperty("sonar.baseUrl") ?: "base_uri_that_we_dont_know"
+       /* def baseUrl = findProperty("sonar.baseUrl") ?: {
             throw new MissingPropertyException("Missing property `sonar.baseUrl` please see README for instructions")
-        }
-
-        def headerValue = findProperty("sonar.headerValue") ?: {
+        }*/
+        def headerValue = findProperty("sonar.headerValue") ?: "some_header_value"
+        /*def headerValue = findProperty("sonar.headerValue") ?: {
             throw new MissingPropertyException("Missing property `sonar.headerValue` please see README for instructions")
-        }
+        }*/
 
-        def analyticsKey = findProperty("sonar.analyticsKey") ?: {
+        def analyticsKey = findProperty("sonar.analyticsKey") ?: "some_key"
+        /*def analyticsKey = findProperty("sonar.analyticsKey") ?: {
             throw new MissingPropertyException("Missing property `sonar.analyticsKey` please see README for instructions")
-        }
+        }*/
 
         buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
         buildConfigField("String", "SONAR_HEADER_VALUE", "\"$headerValue\"")
